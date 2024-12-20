@@ -1,0 +1,33 @@
+{% include 'header.html' %}
+<body>
+    <div class="forms_boxx">
+        <div class="form-container">
+            <h2>Sign Up</h2>
+            <form method="POST" action="{% url 'register' %}">
+                {% csrf_token %}
+            <input type="text" id="username" name="username" placeholder="Username" required>
+            <input type="text" id="firstname" name="firstname" placeholder="First Name" required>
+            <input type="text" id="lastname" name="lastname" placeholder="Last Name" required>
+            <input type="email" id="email" name="email" placeholder="Email" required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <input type="password" id="confirmpassword" name="confirm_password" placeholder="Confirm Password" required>
+            <button type="submit">Submit</button>
+            </form>
+                <div class="messages">
+                    {% for message in messages %}
+                        <div class="message {{ message.tags }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+
+        </div>
+    </div>
+     <!-- Footer -->
+     <div id="footer">
+        <p>&copy; 2024 Immo Green AI. All rights reserved.</p>
+    </div>
+
+</body>
+</html>
+

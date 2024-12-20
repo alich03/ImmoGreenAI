@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>Immo Green AI - Homepage</title>
+    
+</head>
+<body>
+    <nav id="navbar">
+        <div class="logo"><a href="/"><img id="logo_img" src="/static/images/logo.png" alt="ImmoGreenAI_logo"></a><div class="headline"> <h3>Immo Green AI</h3></div></div>
+        <div>
+            <a class="nava" href="/">Home</a>
+            
+            <a class="nava" href="#">Business Partnerships</a>
+            <a class="nava" href="#">Sustainability</a>
+            {% if request.user.is_authenticated %}
+            <a class="nava" href="#">Try ImmoGreenAI</a>
+            <a class="auth-btn {% if request.path == '/accounts/logout' %}active{% endif %} " href="/accounts/logout">Logout</a>
+            {% else %}
+            <a class="auth-btn {% if request.path == '/accounts/register/' %}active{% endif %} " href="/accounts/register">Register</a>
+            <a class="auth-btn" href="/accounts/login">Login</a>
+            {% endif %}
+        </div>
+    </nav>
+
+   <!-- Loader -->
+    <div id="loader" class="loader-overlay">
+        <div class="loader"></div>
+    </div>
+
+</body>

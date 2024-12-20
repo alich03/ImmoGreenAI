@@ -1,0 +1,112 @@
+
+{% include 'header.html' %}
+<body>
+
+
+    <!-- Full Screen Video Section (600px height) -->
+    <div class="video-section">
+        <video autoplay muted loop>
+            <source src="/static/vedio/Immo Green AI Video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="welcome-text">
+            <button class="try-ai-chat-btn" onclick="showPopup()">Try Immo Green AI system</button>
+        </div>
+    </div>
+
+    <!-- Card 1: Image on Left -->
+    <div class="card1">
+        <div class="card-image"><img class="car-imgs" src="/static/images/card2.jpeg" alt=""></div>
+        <div class="card-text">
+            <h2>Explore Our Services</h2>
+            <p class="card_text">AI GREEN SYSTEM
+                Unser innovatives KI-System spart nicht nur Kosten, sondern bietet Ihnen auch sofortige, präzise Lösungen – dank maximaler Transparenz. Alle Inserate und relevanten Daten sind stets aktuell, ohne dass Sie hunderte von Webseiten durchsuchen müssen. Immo Green AI steht für Effizienz und Nachhaltigkeit. Unser Ziel: Wirtschaftliche Vorteile für Sie, kombiniert mit einem verantwortungsvollen Umgang mit natürlichen Ressourcen. Gewinne sind wichtig, doch der Schutz unseres Planeten hat oberste Priorität. Als umweltbewusstes Unternehmen fliesst ein Teil unserer Gewinne in Projekte, die den Umweltschutz fördern und eine lebenswerte Zukunft sichern.</p>
+        </div>
+    </div>
+
+    <!-- Card 2: Image on Right -->
+    <div class="card2">
+        <div class="card-text">
+            <h2>Why Choose Immo Green AI?</h2>
+            <p class="card_text">Grünes Bauen
+                Grünes Bauen wird mit unserem KI-System einfacher und kosteneffizienter. Dank unserer Technologie finden Sie den passenden Baupartner und erhalten eine maßgeschneiderte Planung – ohne hohe Zusatzkosten. Durch unsere Partnerschaften profitieren Sie von exklusiven Angeboten und Fördermitteln, die sonst schwer zugänglich sind. So können Sie nicht nur nachhaltige Bauprojekte umsetzen, sondern auch von staatlichen Zuschüssen profitieren, die Ihr Budget erheblich entlasten. Unser System sorgt für Transparenz und bringt Sie direkt zu den besten Lösungen für ein umweltfreundliches Bauvorhaben.</p>
+        </div>
+        <div class="card-image"><img class="car-imgs" src="/static/images/card1.jpeg" alt=""></div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer">
+        <p>&copy; 2024 Immo Green AI. All rights reserved.</p>
+    </div>
+
+    <!-- Popup Message with Chatbot -->
+    <div id="popup" class="popup-content">
+        <div class="chat_inbox">
+            <div class="chat-box" id="chatBox">
+                <p class="bot-message">How can we help you? Please log in or register to experience the full AI system.</p>
+            </div>
+        </div>
+        <div class="chat-and-btn" style="display: flex;">
+            <input type="text" id="chatInput" class="chat-input" placeholder="Type a message..." />
+            <button class="login-btn" onclick="showLoginMessage()">Send</button>
+        </div>
+        <button class="close-btn" onclick="closePopup()">X</button>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Sticky Menu
+        window.onscroll = function() {
+            stickyNavbar();
+            showPopupOnScroll();
+        };
+
+        var navbar = document.getElementById("navbar");
+        var sticky = navbar.offsetTop;
+
+        function stickyNavbar() {
+            if (window.pageYOffset >= sticky) {
+                navbar.classList.add("sticky");
+            } else {
+                navbar.classList.remove("sticky");
+            }
+        }
+
+        // Handle Chat Input
+        function showLoginMessage() {
+            const chatBox = document.getElementById("chatBox");
+            const userInput = document.getElementById("chatInput");
+
+            // Add user message to chat
+            chatBox.innerHTML += `<p class="user-message">${userInput.value}</p>`;
+            userInput.value = ''; // Clear input field
+
+            // Simulate a bot response
+            setTimeout(() => {
+                chatBox.innerHTML += `<p class="bot-message">Thank you for your message. Please proceed with login or registration.</p>`;
+                chatBox.scrollTop = chatBox.scrollHeight; // Scroll to bottom
+            }, 1000);
+        }
+
+        // Popup handling
+        function showPopup() {
+            const popup = document.getElementById("popup");
+            popup.classList.add("show");
+        }
+
+        function closePopup() {
+            const popup = document.getElementById("popup");
+            popup.classList.remove("show");
+        }
+
+        function showPopupOnScroll() {
+            const popup = document.getElementById("popup");
+            if (window.scrollY > 200) {
+                popup.classList.add("show");
+            }
+        }
+    </script>
+</body>
+</html>
+
+
